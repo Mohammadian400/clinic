@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Repositories
 {
-    public interface IDoctorRepository
+    public interface IWorkingHourRepository
     {
-        List<DoctorViewModel> GetAll();
-        Task EditDoctor(long id,DoctorViewModel model);
     }
 }

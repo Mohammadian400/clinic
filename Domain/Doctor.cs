@@ -15,8 +15,10 @@ namespace Domain
         public string Expertise { get; set; }
         public string JobAddress { get; set; }
         public string Phone { get; set; }
+        public int  AppointmentInterval { get;set; }
 
         public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<WorkingHour> WorkingHours { get; set; }
     }
     
 }

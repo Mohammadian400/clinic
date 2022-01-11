@@ -4,14 +4,16 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    partial class ClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20220103102831_WorkingHour")]
+    partial class WorkingHour
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,9 +53,6 @@ namespace Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AppointmentInterval")
-                        .HasColumnType("int");
-
                     b.Property<string>("Expertise")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -63,6 +62,9 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("FreeTime")
+                        .HasColumnType("int");
 
                     b.Property<string>("JobAddress")
                         .IsRequired()
@@ -87,9 +89,9 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1L,
-                            AppointmentInterval = 30,
                             Expertise = "قلب",
                             Family = "محسنی",
+                            FreeTime = 0,
                             JobAddress = "address1",
                             Name = "علی",
                             Phone = "0912457589"
@@ -97,9 +99,9 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2L,
-                            AppointmentInterval = 15,
                             Expertise = "پوست",
                             Family = "امامی",
+                            FreeTime = 0,
                             JobAddress = "address2",
                             Name = "پویا",
                             Phone = "0912358974"
@@ -107,9 +109,9 @@ namespace Data.Migrations
                         new
                         {
                             Id = 3L,
-                            AppointmentInterval = 20,
                             Expertise = "داخلی",
                             Family = "نادری",
+                            FreeTime = 0,
                             JobAddress = "address3",
                             Name = "اکرم",
                             Phone = "0912763548"
@@ -222,7 +224,7 @@ namespace Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DayOfWeek")
+                    b.Property<int>("Day")
                         .HasColumnType("int");
 
                     b.Property<long>("DoctorId")
@@ -239,32 +241,6 @@ namespace Data.Migrations
                     b.HasIndex("DoctorId");
 
                     b.ToTable("WorkingHours");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            DayOfWeek = 0,
-                            DoctorId = 1L,
-                            FromWorkHour = new TimeSpan(0, 9, 30, 0, 0),
-                            ToWorkHour = new TimeSpan(0, 16, 0, 0, 0)
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            DayOfWeek = 6,
-                            DoctorId = 2L,
-                            FromWorkHour = new TimeSpan(0, 8, 0, 0, 0),
-                            ToWorkHour = new TimeSpan(0, 17, 0, 0, 0)
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            DayOfWeek = 1,
-                            DoctorId = 3L,
-                            FromWorkHour = new TimeSpan(0, 8, 0, 0, 0),
-                            ToWorkHour = new TimeSpan(0, 20, 30, 0, 0)
-                        });
                 });
 
             modelBuilder.Entity("Domain.Appointment", b =>

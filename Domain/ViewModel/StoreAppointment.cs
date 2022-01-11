@@ -7,8 +7,12 @@ namespace Domain.ViewModel
 {
     public class StoreAppointment
     {
-        public int DoctorId { get; set; }
+        //public int year;
+
+        public long DoctorId { get; set; }
         public int UserId { get; set; }
         public DateTime AppointmentDate { get; set; }
+       
+        //public int Month { get; set; }
     }
 }

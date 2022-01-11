@@ -9,5 +9,6 @@ namespace Logic.Repositories
         List<AppointmentViewModel> GetAll();
         Task<long> CreateAppointment(StoreAppointment appointmentModel);
         Task DeleteAppointment(long id);
+        
     }
 }

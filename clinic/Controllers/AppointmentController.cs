@@ -57,7 +57,7 @@ namespace clinic.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> CreateAppointment(StoreAppointment model)
+        public async Task<ActionResult<long>> CreateAppointment(StoreAppointment model)
         {
             return Ok(await _repository.CreateAppointment(model));
         }

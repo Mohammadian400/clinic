@@ -1,7 +1,10 @@
 ﻿using Domain.ViewModel;
 using Logic.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace clinic.Controllers
 {
     public class DoctorController : BaseApiController
@@ -18,6 +21,18 @@ namespace clinic.Controllers
         {
             var doctors = _repository.GetAll();
             return Ok(doctors);
+        }
+        [HttpPut]
+        public async Task<IActionResult> EditDoctor(int id, DoctorViewModel model)
+        {
+            await _repository.EditDoctor(id, model);
+            return Ok(true);
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<DoctorWithWorkingHour>> GetDoctorWithHourTimes()
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -21,7 +21,7 @@ namespace Domain
         public int RemainingDays()
         {
             var now = DateTime.Now;
-            var remainig = AppointmentDate - now;
+            var remainig = now - AppointmentDate;
 
             return remainig.Days;
         }
