@@ -41,7 +41,7 @@ namespace Logic.Repositories
                                                 c.FromWorkHour,
                                                 c.ToWorkHour
                                             }).DefaultIfEmpty().AsEnumerable()
-
+                          
                         select new DoctorWithWorkingHour
                         {
                             Name = f.Name,

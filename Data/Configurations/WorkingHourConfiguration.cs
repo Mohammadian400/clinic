@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Configurations
 {
-    class WorkingHourConfiguration: IEntityTypeConfiguration<WorkingHour>
+   public class WorkingHourConfiguration: IEntityTypeConfiguration<WorkingHour>
     {
         public void Configure(EntityTypeBuilder<WorkingHour> builder)
         {
